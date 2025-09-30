@@ -1,7 +1,7 @@
 # CARBON EMISSION ANALYSIS
 
-[Souce: https://green-glossary.com/en/terim/66-emisyon]
 ![](https://github.com/nheesele/carbon_emission_analysis/blob/main/big_emission-_shutterstock_1871428867.jpg)
+Souce: https://green-glossary.com/en/terim/66-emisyon
 
 This report aims to analyze carbon emissions to examine the carbon footprint across various industries. We aim to identify sectors with the highest levels of emissions by analyzing them across countries and years, as well as to uncover trends.
 
@@ -10,7 +10,7 @@ Through this analysis, we hope to gain an understanding of the environmental imp
 ## Data Structure
 The dataset consists of 4 tables containing information regarding carbon emissions generated during the production of goods.
 
-
+![](https://github.com/nheesele/carbon_emission_analysis/blob/main/Database%20diagram.png)
 
 Table 1: product_emissions
 ```sql
