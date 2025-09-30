@@ -71,13 +71,13 @@ SELECT * FROM countries LIMIT 5;
 ```SQL
 SELECT 
 		product_name,
-		ROUND(AVG(carbon_footprint_pcf),2) AS "Total PCF"
+		ROUND(AVG(carbon_footprint_pcf),2) AS "AVG PCF"
 FROM product_emissions
 GROUP BY product_name
 ORDER BY AVG(carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
-|product_name|Total PCF|
+|product_name|AVG PCF|
 |------------|---------|
 |Wind Turbine G128 5 Megawats|3718044.00|
 |Wind Turbine G132 5 Megawats|3276187.00|
@@ -90,7 +90,7 @@ LIMIT 10;
 |Mercedes-Benz S-Class (S 500)|85000.00|
 |Mercedes-Benz SL (SL 350)|72000.00|
 
-> The dominance of *wind turbines* in the ranking reflects their large-scale structure and resource-intensive production, but this category is quite specific. Excluding turbines, the data reveals that *automobiles*, especially SUVs and luxury cars, are significant contributors, underlining the role of consumer transportation in overall emissions.
+> It is somewhat ironic that *wind turbines*, a symbol of clean energy, rank as the biggest carbon emitters during production. This highlights the paradox that building green technology can be carbon-intensive before it becomes part of the solution. Excluding turbines, the data reveals that *automobiles*, especially SUVs and luxury cars, are significant contributors, underlining the role of consumer transportation in overall emissions.
 > 
 ### What are the industry groups of these products?
 
@@ -149,7 +149,7 @@ LIMIT 10;
 |Software & Services|46544.00|
 |Media|23017.00|
 
->The results show that *Electrical Equipment and Machinery* contributes the most, but its dominance is skewed by the turbine category. When considered broadly, *Automobiles & Components* and *Materials* represent industries with more diverse and widespread product emissions, indicating they may have a greater everyday impact.
+>The results show that *Electrical Equipment and Machinery* contributes the most, but its dominance is skewed by the turbine category. When considered broadly, *Automobiles & Components* and *Materials* represent industries with more diverse and widespread product emissions, indicating they may have a greater everyday impact. Noted that the *Pharmaceuticals, Biotechnology & Life Sciences* industry stands in 7th place, our medicine might cure us, but it’s not doing the planet’s health any favors.
 
 ### What are the companies with the highest contribution to carbon emissions?
 
@@ -159,7 +159,7 @@ LIMIT 10;
 SELECT 
 	industry_groups.industry_group,
     companies.company_name,
-    ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "Total PCF"
+    ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "AVG PCF"
 FROM product_emissions
 JOIN companies
     ON companies.id = product_emissions.company_id
@@ -169,7 +169,7 @@ GROUP BY companies.company_name
 ORDER BY AVG(product_emissions.carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
-|industry_group|company_name|Total PCF|
+|industry_group|company_name|AVG PCF|
 |--------------|------------|---------|
 |Electrical Equipment and Machinery|"Gamesa Corporación Tecnológica, S.A."|2444616.00|
 |Automobiles & Components|"Hino Motors, Ltd."|191687.00|
@@ -186,11 +186,57 @@ LIMIT 10;
 
 ### What are the countries with the highest contribution to carbon emissions?
 
+Top 10 countries with the highest average PCF
+```SQL
+SELECT 
+    countries.country_name,
+    ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "AVG PCF"
+FROM product_emissions
+JOIN countries
+    ON countries.id = product_emissions.country_id
+GROUP BY countries.country_name
+ORDER BY AVG(product_emissions.carbon_footprint_pcf) DESC
+LIMIT 10;
+```
+|country_name|AVG PCF|
+|------------|---------|
+|Spain|699009.29|
+|Luxembourg|83503.50|
+|Germany|33600.37|
+|Brazil|9407.61|
+|South Korea|5665.61|
+|Japan|4600.26|
+|Netherlands|2011.91|
+|India|1535.88|
+|USA|1332.60|
+|South Africa|1119.27|
+
+> Most of the top emitters are European-based companies and countries (Spain, Germany, Luxembourg, Netherlands). Europe may be leading the climate agenda, but it is also home to many of the biggest contributors.
 
 ### What is the trend of carbon footprints (PCFs) over the years?
 
+```SQL
+SELECT 
+  	product_emissions.year,
+    ROUND(AVG(product_emissions.carbon_footprint_pcf), 2) AS "AVG PCF",
+    ROUND(SUM(product_emissions.carbon_footprint_pcf), 2) AS "Total PCF"
+FROM product_emissions
+GROUP BY year
+ORDER BY year;
+```
+|year|AVG PCF|Total PCF|
+|----|-------|---------|
+|2013|2399.32|503857.00|
+|2014|2457.58|624226.00|
+|2015|43188.90|10840415.00|
+|2016|6891.52|1640182.00|
+|2017|4050.85|340271.00|
 
-### Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
+> From 2013 to 2014, both average and total PCF increased slightly.
+> In 2015, there was a huge jump, with average PCF reaching over 43,000 and total PCF over 10 million.
+> After 2015, the numbers dropped sharply in 2016 and went even lower in 2017.
+> Overall, 2015 looks like an outlier, while the general trend from 2013 to 2017 is downward.
+> 
 
 
 
