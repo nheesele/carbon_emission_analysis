@@ -1,6 +1,6 @@
 # CARBON EMISSION ANALYSIS
 
-[Souce: https://www.theguardian.com/environment/2009/may/21/carbon-emissions-questions]
+[Souce: https://green-glossary.com/en/terim/66-emisyon]
 
 
 This report aims to analyze carbon emissions to examine the carbon footprint across various industries. We aim to identify sectors with the highest levels of emissions by analyzing them across countries and years, as well as to uncover trends.
