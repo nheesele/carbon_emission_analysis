@@ -68,18 +68,24 @@ SELECT * FROM countries LIMIT 5;
 #### Which products contribute the most to carbon emissions?
 
 ```SQL
-SELECT *
+SELECT 
+		id,
+		product_name,
+		SUM(carbon_footprint_pcf) AS "Total PCF"
 FROM product_emissions
-ORDER BY carbon_footprint_pcf DESC
-LIMIT 3;
+GROUP BY product_name
+ORDER BY SUM(carbon_footprint_pcf) DESC
+LIMIT 5;
 ```
-Here are the Top 3 products contribute the most to carbon emissions
+Here are the Top 5 products contribute the most to carbon emissions
 
-|id|company_id|country_id|industry_group_id|year|product_name|weight_kg|carbon_footprint_pcf|upstream_percent_total_pcf|operations_percent_total_pcf|downstream_percent_total_pcf|
-|--|----------|----------|-----------------|----|------------|---------|--------------------|--------------------------|----------------------------|----------------------------|
-|22917-4-2015|10|23|13|2015|Wind Turbine G128 5 Megawats|600000.0|3718044|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|
-|22917-5-2015|10|23|13|2015|Wind Turbine G132 5 Megawats|600000.0|3276187|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|
-|22917-3-2015|10|23|13|2015|Wind Turbine G114 2 Megawats|400000.0|1532608|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|
+|id|product_name|Total PCF|
+|--|------------|---------|
+|22917-4-2015|Wind Turbine G128 5 Megawats|3718044|
+|22917-5-2015|Wind Turbine G132 5 Megawats|3276187|
+|22917-3-2015|Wind Turbine G114 2 Megawats|1532608|
+|22917-2-2015|Wind Turbine G90 2 Megawats|1251625|
+|12134-8-2017|TCDE|198150|
 
 #### What are the industry groups of these products?
 
