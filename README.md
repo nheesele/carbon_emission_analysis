@@ -3,7 +3,7 @@
 ![](https://github.com/nheesele/carbon_emission_analysis/blob/main/big_emission-_shutterstock_1871428867.jpg)
 Souce: https://green-glossary.com/en/terim/66-emisyon
 
-This report aims to analyze carbon emissions to examine the carbon footprint across various industries. We aim to identify sectors with the highest levels of emissions by analyzing them across countries and years, as well as to uncover trends.
+This report aims to analyze carbon emissions to examine the carbon footprint across various industries. The report aims to identify sectors with the highest levels of emissions by analyzing them across countries and years, as well as to uncover trends.
 
 Through this analysis, we hope to gain an understanding of the environmental impact of different industries and contribute to making informed decisions in sustainable development.
 
