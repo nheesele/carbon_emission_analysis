@@ -1,5 +1,8 @@
 # CARBON EMISSION ANALYSIS
 
+[Souce: https://www.theguardian.com/environment/2009/may/21/carbon-emissions-questions]
+
+
 This report aims to analyze carbon emissions to examine the carbon footprint across various industries. We aim to identify sectors with the highest levels of emissions by analyzing them across countries and years, as well as to uncover trends.
 
 Through this analysis, we hope to gain an understanding of the environmental impact of different industries and contribute to making informed decisions in sustainable development.
