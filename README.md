@@ -67,7 +67,7 @@ SELECT * FROM countries LIMIT 5;
 ## Data analysis
 #### Which products contribute the most to carbon emissions?
 
-Here are the Top 5 products with the highest PCF
+Here are the Top 10 products with the highest PCF
 ```SQL
 SELECT 
 		id,
@@ -149,6 +149,31 @@ LIMIT 10;
 
 #### What are the companies with the highest contribution to carbon emissions?
 
+Top 10 companies with highest PCF
+
+```SQL
+SELECT 
+    companies.company_name,
+    SUM(product_emissions.carbon_footprint_pcf) AS "Total PCF"
+FROM product_emissions
+JOIN companies
+    ON companies.id = product_emissions.company_id
+GROUP BY companies.company_name
+ORDER BY SUM(product_emissions.carbon_footprint_pcf) DESC
+LIMIT 10;
+```
+|company_name|Total PCF|
+|------------|---------|
+|"Gamesa Corporación Tecnológica, S.A."|9778464|
+|Daimler AG|1594300|
+|Volkswagen AG|655960|
+|"Mitsubishi Gas Chemical Company, Inc."|212016|
+|"Hino Motors, Ltd."|191687|
+|Arcelor Mittal|167007|
+|Weg S/A|160655|
+|General Motors Company|137007|
+|"Lexmark International, Inc."|132012|
+|"Daikin Industries, Ltd."|105600|
 
 #### What are the countries with the highest contribution to carbon emissions?
 
