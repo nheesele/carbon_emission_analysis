@@ -7,6 +7,10 @@ This report aims to analyze carbon emissions to examine the carbon footprint acr
 
 Through this analysis, we hope to gain an understanding of the environmental impact of different industries and contribute to making informed decisions in sustainable development.
 
+## Data Souce:
+
+Our dataset is compiled from publicly available data from nature.com and encompasses the product carbon footprints (PCF) for various companies. PCFs represent the greenhouse gas emissions associated with specific products, quantified in CO2 (carbon dioxide equivalent).
+
 ## Data Structure
 The dataset consists of 4 tables containing information regarding carbon emissions generated during the production of goods.
 
@@ -59,5 +63,21 @@ SELECT * FROM countries LIMIT 5;
 |3|Brazil|
 |4|Canada|
 |5|Chile|
+
+## Data analysis
+#### Which products contribute the most to carbon emissions?
+
+```SQL
+SELECT *
+FROM product_emissions
+ORDER BY carbon_footprint_pcf DESC
+LIMIT 3;
+```
+|id|company_id|country_id|industry_group_id|year|product_name|weight_kg|carbon_footprint_pcf|upstream_percent_total_pcf|operations_percent_total_pcf|downstream_percent_total_pcf|
+|--|----------|----------|-----------------|----|------------|---------|--------------------|--------------------------|----------------------------|----------------------------|
+|22917-4-2015|10|23|13|2015|Wind Turbine G128 5 Megawats|600000.0|3718044|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|
+|22917-5-2015|10|23|13|2015|Wind Turbine G132 5 Megawats|600000.0|3276187|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|
+|22917-3-2015|10|23|13|2015|Wind Turbine G114 2 Megawats|400000.0|1532608|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|
+
 
 
