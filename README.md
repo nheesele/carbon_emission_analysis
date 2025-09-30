@@ -1,7 +1,7 @@
 # CARBON EMISSION ANALYSIS
 
 ![](https://github.com/nheesele/carbon_emission_analysis/blob/main/big_emission-_shutterstock_1871428867.jpg)
-Souce: https://green-glossary.com/en/terim/66-emisyon
+> Souce: https://green-glossary.com/en/terim/66-emisyon
 
 This report aims to analyze carbon emissions to examine the carbon footprint across various industries, identify sectors with the highest levels of emissions by analyzing them across countries and years, as well as to uncover trends.
 
@@ -67,7 +67,7 @@ SELECT * FROM countries LIMIT 5;
 ## Data analysis
 #### Which products contribute the most to carbon emissions?
 
-Here are the Top 10 products with the highest average PCF
+*Here are the Top 10 products with the highest average PCF*
 ```SQL
 SELECT 
 		product_name,
@@ -90,9 +90,11 @@ LIMIT 10;
 |Mercedes-Benz S-Class (S 500)|85000.00|
 |Mercedes-Benz SL (SL 350)|72000.00|
 
+> The dominance of *wind turbines* in the ranking reflects their large-scale structure and resource-intensive production, but this category is quite specific. Excluding turbines, the data reveals that *automobiles*, especially SUVs and luxury cars, are significant contributors, underlining the role of consumer transportation in overall emissions.
+> 
 #### What are the industry groups of these products?
 
-Let's see which industry do the top 10 above belongs to:
+*Let's see which industry do the top 10 above belongs to:*
 ```SQL
 SELECT 	product_emissions.id,
 		product_emissions.product_name,
@@ -105,7 +107,6 @@ GROUP BY product_name
 ORDER BY AVG(carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
-
 |id|product_name|carbon_footprint_pcf|industry_group|
 |--|------------|--------------------|--------------|
 |22917-4-2015|Wind Turbine G128 5 Megawats|3718044|Electrical Equipment and Machinery|
@@ -119,9 +120,11 @@ LIMIT 10;
 |4235-32-2016|Mercedes-Benz S-Class (S 500)|85000|Automobiles & Components|
 |4235-36-2016|Mercedes-Benz SL (SL 350)|72000|Automobiles & Components|
 
+> The concentration of top-emitting products in *Electrical Equipment and Machinery* is largely driven by turbines, while *Automobiles & Components* emerges as a major emitter across multiple product types. This suggests that ***transportation-related products*** consistently generate high emissions, making the sector a critical area for carbon reduction efforts.
+> 
 #### What are the industries with the highest contribution to carbon emissions?
 
-Here are the top 10 industries with the highest total PCF:
+*Here are the top 10 industries with the highest total PCF:*
 
 ```SQL
 SELECT 	industry_groups.industry_group,
@@ -146,10 +149,11 @@ LIMIT 10;
 |Software & Services|46544.00|
 |Media|23017.00|
 
+>The results show that *Electrical Equipment and Machinery* contributes the most, but its dominance is skewed by the turbine category. When considered broadly, *Automobiles & Components* and *Materials* represent industries with more diverse and widespread product emissions, indicating they may have a greater everyday impact.
 
 #### What are the companies with the highest contribution to carbon emissions?
 
-Top 10 companies with highest PCF
+*Top 10 companies with highest average PCF*
 
 ```SQL
 SELECT 
@@ -174,6 +178,8 @@ LIMIT 10;
 |Waters Corporation|24162.00|
 |"Daikin Industries, Ltd."|17600.00|
 |CJ Cheiljedang|15802.83|
+
+> *Gamesa Corporación Tecnológica* stands out due to its turbine products, but beyond this, the leading emitters are global automotive and industrial giants such as *Hino Motors, Daimler AG,* and *Arcelor Mittal*. This highlights that both renewable technology manufacturers and traditional heavy industries play major roles in the carbon landscape.
 
 #### What are the countries with the highest contribution to carbon emissions?
 
