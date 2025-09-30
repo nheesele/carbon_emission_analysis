@@ -4,9 +4,11 @@ This report aims to analyze carbon emissions to examine the carbon footprint acr
 
 Through this analysis, we hope to gain an understanding of the environmental impact of different industries and contribute to making informed decisions in sustainable development.
 
-##Data Structure
+## Data Structure
 The dataset consists of 4 tables containing information regarding carbon emissions generated during the production of goods.
+
 Table 1: product_emissions
+
 |id|company_id|country_id|industry_group_id|year|product_name|weight_kg|carbon_footprint_pcf|upstream_percent_total_pcf|operations_percent_total_pcf|downstream_percent_total_pcf|
 |--|----------|----------|-----------------|----|------------|---------|--------------------|--------------------------|----------------------------|----------------------------|
 |10056-1-2014|82|28|2|2014|Frosted Flakes(R) Cereal|0.7485|2|57.50|30.00|12.50|
