@@ -73,11 +73,31 @@ FROM product_emissions
 ORDER BY carbon_footprint_pcf DESC
 LIMIT 3;
 ```
+Here are the Top 3 products contribute the most to carbon emissions
+
 |id|company_id|country_id|industry_group_id|year|product_name|weight_kg|carbon_footprint_pcf|upstream_percent_total_pcf|operations_percent_total_pcf|downstream_percent_total_pcf|
 |--|----------|----------|-----------------|----|------------|---------|--------------------|--------------------------|----------------------------|----------------------------|
 |22917-4-2015|10|23|13|2015|Wind Turbine G128 5 Megawats|600000.0|3718044|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|
 |22917-5-2015|10|23|13|2015|Wind Turbine G132 5 Megawats|600000.0|3276187|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|
 |22917-3-2015|10|23|13|2015|Wind Turbine G114 2 Megawats|400000.0|1532608|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|N/a (product with insufficient stage-level data)|
+
+#### What are the industry groups of these products?
+
+
+
+#### What are the industries with the highest contribution to carbon emissions?
+
+
+#### What are the companies with the highest contribution to carbon emissions?
+
+
+#### What are the countries with the highest contribution to carbon emissions?
+
+
+#### What is the trend of carbon footprints (PCFs) over the years?
+
+
+#### Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
 
 
 
