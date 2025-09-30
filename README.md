@@ -65,7 +65,7 @@ SELECT * FROM countries LIMIT 5;
 |5|Chile|
 
 ## Data analysis
-#### Which products contribute the most to carbon emissions?
+### Which products contribute the most to carbon emissions?
 
 *Here are the Top 10 products with the highest average PCF*
 ```SQL
@@ -92,7 +92,7 @@ LIMIT 10;
 
 > The dominance of *wind turbines* in the ranking reflects their large-scale structure and resource-intensive production, but this category is quite specific. Excluding turbines, the data reveals that *automobiles*, especially SUVs and luxury cars, are significant contributors, underlining the role of consumer transportation in overall emissions.
 > 
-#### What are the industry groups of these products?
+### What are the industry groups of these products?
 
 *Let's see which industry do the top 10 above belongs to:*
 ```SQL
@@ -122,7 +122,7 @@ LIMIT 10;
 
 > The concentration of top-emitting products in *Electrical Equipment and Machinery* is largely driven by turbines, while *Automobiles & Components* emerges as a major emitter across multiple product types. This suggests that ***transportation-related products*** consistently generate high emissions, making the sector a critical area for carbon reduction efforts.
 > 
-#### What are the industries with the highest contribution to carbon emissions?
+### What are the industries with the highest contribution to carbon emissions?
 
 *Here are the top 10 industries with the highest total PCF:*
 
@@ -151,7 +151,7 @@ LIMIT 10;
 
 >The results show that *Electrical Equipment and Machinery* contributes the most, but its dominance is skewed by the turbine category. When considered broadly, *Automobiles & Components* and *Materials* represent industries with more diverse and widespread product emissions, indicating they may have a greater everyday impact.
 
-#### What are the companies with the highest contribution to carbon emissions?
+### What are the companies with the highest contribution to carbon emissions?
 
 *Top 10 companies with highest average PCF*
 
@@ -184,13 +184,13 @@ LIMIT 10;
 
 > *Gamesa Corporación Tecnológica* stands out due to its turbine products, but beyond this, the leading emitters are global automotive and industrial giants such as *Hino Motors, Daimler AG,* and *Arcelor Mittal*. This highlights that both renewable technology manufacturers and traditional heavy industries play major roles in the carbon landscape.
 
-#### What are the countries with the highest contribution to carbon emissions?
+### What are the countries with the highest contribution to carbon emissions?
 
 
-#### What is the trend of carbon footprints (PCFs) over the years?
+### What is the trend of carbon footprints (PCFs) over the years?
 
 
-#### Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
+### Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
 
 
 
