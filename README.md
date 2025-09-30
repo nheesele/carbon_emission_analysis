@@ -43,13 +43,6 @@ SELECT * FROM companies LIMIT 5;
 |4|"CNX Coal Resources, LP"|
 |5|"Coca-Cola Enterprises, Inc."|
 
-| id | company_name                  | 
-| -: | ----------------------------: | 
-| 1  | "Autodesk, Inc."              | 
-| 2  | "Casio Computer Co., Ltd."    | 
-| 3  | "Cisco Systems, Inc."         | 
-| 4  | "CNX Coal Resources, LP"      | 
-| 5  | "Coca-Cola Enterprises, Inc." | 
 Table 4: countries
 ```sql
 SELECT * FROM countries LIMIT 5;
