@@ -76,7 +76,7 @@ SELECT
 FROM product_emissions
 GROUP BY product_name
 ORDER BY SUM(carbon_footprint_pcf) DESC
-LIMIT 5;
+LIMIT 10;
 ```
 |id|product_name|Total PCF|
 |--|------------|---------|
@@ -85,9 +85,65 @@ LIMIT 5;
 |22917-3-2015|Wind Turbine G114 2 Megawats|1532608|
 |22917-2-2015|Wind Turbine G90 2 Megawats|1251625|
 |12134-8-2017|TCDE|198150|
+|8362-1-2016|Land Cruiser Prado. FJ Cruiser. Dyna trucks. Toyoace.IMV def unit.|191687|
+|904-2-2013|Retaining wall structure with a main wall (sheet pile): 136 tonnes of steel sheet piles and 4 tonnes of tierods per 100 meter wall|167000|
+|20527-1-2013|Electric Motor|160655|
+|20309-7-2014|Audi A6|111282|
+|7164-1-2013|Average of all GM vehicles produced and used in the 10 year life-cycle.|100621|
 
 #### What are the industry groups of these products?
 
+Let's see which industry do the top 10 above belong to:
+```SQL
+SELECT 	product_emissions.id,
+		product_emissions.product_name,
+		product_emissions.carbon_footprint_pcf,
+		industry_groups.industry_group
+FROM product_emissions
+LEFT JOIN industry_groups
+    ON industry_groups.id = product_emissions.industry_group_id
+GROUP BY product_name
+ORDER BY SUM(carbon_footprint_pcf) DESC
+LIMIT 10;
+```
+
+|id|product_name|carbon_footprint_pcf|industry_group|
+|--|------------|--------------------|--------------|
+|22917-4-2015|Wind Turbine G128 5 Megawats|3718044|Electrical Equipment and Machinery|
+|22917-5-2015|Wind Turbine G132 5 Megawats|3276187|Electrical Equipment and Machinery|
+|22917-3-2015|Wind Turbine G114 2 Megawats|1532608|Electrical Equipment and Machinery|
+|22917-2-2015|Wind Turbine G90 2 Megawats|1251625|Electrical Equipment and Machinery|
+|12134-8-2017|TCDE|99075|Materials|
+|8362-1-2016|Land Cruiser Prado. FJ Cruiser. Dyna trucks. Toyoace.IMV def unit.|191687|Automobiles & Components|
+|904-2-2013|Retaining wall structure with a main wall (sheet pile): 136 tonnes of steel sheet piles and 4 tonnes of tierods per 100 meter wall|167000|Materials|
+|20527-1-2013|Electric Motor|53058|Capital Goods|
+|20309-7-2014|Audi A6|37094|Automobiles & Components|
+|7164-1-2013|Average of all GM vehicles produced and used in the 10 year life-cycle.|27588|Automobiles & Components|
+
+Here are the top 10 industries with highest PCF:
+
+```SQL
+SELECT 	industry_groups.industry_group,
+		SUM(product_emissions.carbon_footprint_pcf) AS "Total PCF"
+FROM product_emissions
+LEFT JOIN industry_groups
+    ON industry_groups.id = product_emissions.industry_group_id
+GROUP BY industry_groups.industry_group
+ORDER BY SUM(carbon_footprint_pcf) DESC
+LIMIT 10;
+```
+|industry_group|Total PCF|
+|--------------|---------|
+|Electrical Equipment and Machinery|9801558|
+|Automobiles & Components|2582264|
+|Materials|577595|
+|Technology Hardware & Equipment|363776|
+|Capital Goods|258712|
+|"Food, Beverage & Tobacco"|111131|
+|"Pharmaceuticals, Biotechnology & Life Sciences"|72486|
+|Chemicals|62369|
+|Software & Services|46544|
+|Media|23017|
 
 
 #### What are the industries with the highest contribution to carbon emissions?
