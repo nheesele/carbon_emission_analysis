@@ -70,26 +70,25 @@ SELECT * FROM countries LIMIT 5;
 Here are the Top 10 products with the highest PCF
 ```SQL
 SELECT 
-		id,
 		product_name,
-		AVG(carbon_footprint_pcf) AS "Total PCF"
+		ROUND(AVG(carbon_footprint_pcf),2) AS "Total PCF"
 FROM product_emissions
 GROUP BY product_name
 ORDER BY AVG(carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
-|id|product_name|Total PCF|
-|--|------------|---------|
-|22917-4-2015|Wind Turbine G128 5 Megawats|3718044.0000|
-|22917-5-2015|Wind Turbine G132 5 Megawats|3276187.0000|
-|22917-3-2015|Wind Turbine G114 2 Megawats|1532608.0000|
-|22917-2-2015|Wind Turbine G90 2 Megawats|1251625.0000|
-|8362-1-2016|Land Cruiser Prado. FJ Cruiser. Dyna trucks. Toyoace.IMV def unit.|191687.0000|
-|904-2-2013|Retaining wall structure with a main wall (sheet pile): 136 tonnes of steel sheet piles and 4 tonnes of tierods per 100 meter wall|167000.0000|
-|12134-8-2017|TCDE|99075.0000|
-|4235-30-2016|Mercedes-Benz GLE (GLE 500 4MATIC)|91000.0000|
-|4235-32-2016|Mercedes-Benz S-Class (S 500)|85000.0000|
-|4235-36-2016|Mercedes-Benz SL (SL 350)|72000.0000|
+|product_name|Total PCF|
+|------------|---------|
+|Wind Turbine G128 5 Megawats|3718044.00|
+|Wind Turbine G132 5 Megawats|3276187.00|
+|Wind Turbine G114 2 Megawats|1532608.00|
+|Wind Turbine G90 2 Megawats|1251625.00|
+|Land Cruiser Prado. FJ Cruiser. Dyna trucks. Toyoace.IMV def unit.|191687.00|
+|Retaining wall structure with a main wall (sheet pile): 136 tonnes of steel sheet piles and 4 tonnes of tierods per 100 meter wall|167000.00|
+|TCDE|99075.00|
+|Mercedes-Benz GLE (GLE 500 4MATIC)|91000.00|
+|Mercedes-Benz S-Class (S 500)|85000.00|
+|Mercedes-Benz SL (SL 350)|72000.00|
 
 #### What are the industry groups of these products?
 
@@ -126,7 +125,7 @@ Here are the top 10 industries with highest PCF:
 
 ```SQL
 SELECT 	industry_groups.industry_group,
-		AVG(product_emissions.carbon_footprint_pcf) AS "Total PCF"
+		ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "Total PCF"
 FROM product_emissions
 LEFT JOIN industry_groups
     ON industry_groups.id = product_emissions.industry_group_id
@@ -136,16 +135,16 @@ LIMIT 10;
 ```
 |industry_group|Total PCF|
 |--------------|---------|
-|Electrical Equipment and Machinery|891050.7273|
-|Automobiles & Components|35373.4795|
-|"Pharmaceuticals, Biotechnology & Life Sciences"|24162.0000|
-|Capital Goods|7391.7714|
-|Materials|3208.8611|
-|"Mining - Iron, Aluminum, Other Metals"|2727.0000|
-|Energy|2154.8000|
-|Chemicals|1949.0313|
-|Media|1534.4667|
-|Software & Services|1368.9412|
+|Electrical Equipment and Machinery|891050.73|
+|Automobiles & Components|35373.48|
+|"Pharmaceuticals, Biotechnology & Life Sciences"|24162.00|
+|Capital Goods|7391.77|
+|Materials|3208.86|
+|"Mining - Iron, Aluminum, Other Metals"|2727.00|
+|Energy|2154.80|
+|Chemicals|1949.03|
+|Media|1534.47|
+|Software & Services|1368.94|
 
 #### What are the companies with the highest contribution to carbon emissions?
 
@@ -154,7 +153,7 @@ Top 10 companies with highest PCF
 ```SQL
 SELECT 
     companies.company_name,
-    AVG(product_emissions.carbon_footprint_pcf) AS "Total PCF"
+    ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "Total PCF"
 FROM product_emissions
 JOIN companies
     ON companies.id = product_emissions.company_id
@@ -164,16 +163,16 @@ LIMIT 10;
 ```
 |company_name|Total PCF|
 |------------|---------|
-|"Gamesa Corporación Tecnológica, S.A."|2444616.0000|
-|"Hino Motors, Ltd."|191687.0000|
-|Arcelor Mittal|83503.5000|
-|Weg S/A|53551.6667|
-|Daimler AG|43089.1892|
-|General Motors Company|34251.7500|
-|Volkswagen AG|26238.4000|
-|Waters Corporation|24162.0000|
-|"Daikin Industries, Ltd."|17600.0000|
-|CJ Cheiljedang|15802.8333|
+|"Gamesa Corporación Tecnológica, S.A."|2444616.00|
+|"Hino Motors, Ltd."|191687.00|
+|Arcelor Mittal|83503.50|
+|Weg S/A|53551.67|
+|Daimler AG|43089.19|
+|General Motors Company|34251.75|
+|Volkswagen AG|26238.40|
+|Waters Corporation|24162.00|
+|"Daikin Industries, Ltd."|17600.00|
+|CJ Cheiljedang|15802.83|
 
 #### What are the countries with the highest contribution to carbon emissions?
 
