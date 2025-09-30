@@ -72,24 +72,24 @@ Here are the Top 10 products with the highest PCF
 SELECT 
 		id,
 		product_name,
-		SUM(carbon_footprint_pcf) AS "Total PCF"
+		AVG(carbon_footprint_pcf) AS "Total PCF"
 FROM product_emissions
 GROUP BY product_name
-ORDER BY SUM(carbon_footprint_pcf) DESC
+ORDER BY AVG(carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
 |id|product_name|Total PCF|
 |--|------------|---------|
-|22917-4-2015|Wind Turbine G128 5 Megawats|3718044|
-|22917-5-2015|Wind Turbine G132 5 Megawats|3276187|
-|22917-3-2015|Wind Turbine G114 2 Megawats|1532608|
-|22917-2-2015|Wind Turbine G90 2 Megawats|1251625|
-|12134-8-2017|TCDE|198150|
-|8362-1-2016|Land Cruiser Prado. FJ Cruiser. Dyna trucks. Toyoace.IMV def unit.|191687|
-|904-2-2013|Retaining wall structure with a main wall (sheet pile): 136 tonnes of steel sheet piles and 4 tonnes of tierods per 100 meter wall|167000|
-|20527-1-2013|Electric Motor|160655|
-|20309-7-2014|Audi A6|111282|
-|7164-1-2013|Average of all GM vehicles produced and used in the 10 year life-cycle.|100621|
+|22917-4-2015|Wind Turbine G128 5 Megawats|3718044.0000|
+|22917-5-2015|Wind Turbine G132 5 Megawats|3276187.0000|
+|22917-3-2015|Wind Turbine G114 2 Megawats|1532608.0000|
+|22917-2-2015|Wind Turbine G90 2 Megawats|1251625.0000|
+|8362-1-2016|Land Cruiser Prado. FJ Cruiser. Dyna trucks. Toyoace.IMV def unit.|191687.0000|
+|904-2-2013|Retaining wall structure with a main wall (sheet pile): 136 tonnes of steel sheet piles and 4 tonnes of tierods per 100 meter wall|167000.0000|
+|12134-8-2017|TCDE|99075.0000|
+|4235-30-2016|Mercedes-Benz GLE (GLE 500 4MATIC)|91000.0000|
+|4235-32-2016|Mercedes-Benz S-Class (S 500)|85000.0000|
+|4235-36-2016|Mercedes-Benz SL (SL 350)|72000.0000|
 
 #### What are the industry groups of these products?
 
@@ -103,7 +103,7 @@ FROM product_emissions
 LEFT JOIN industry_groups
     ON industry_groups.id = product_emissions.industry_group_id
 GROUP BY product_name
-ORDER BY SUM(carbon_footprint_pcf) DESC
+ORDER BY AVG(carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
 
@@ -113,12 +113,12 @@ LIMIT 10;
 |22917-5-2015|Wind Turbine G132 5 Megawats|3276187|Electrical Equipment and Machinery|
 |22917-3-2015|Wind Turbine G114 2 Megawats|1532608|Electrical Equipment and Machinery|
 |22917-2-2015|Wind Turbine G90 2 Megawats|1251625|Electrical Equipment and Machinery|
-|12134-8-2017|TCDE|99075|Materials|
 |8362-1-2016|Land Cruiser Prado. FJ Cruiser. Dyna trucks. Toyoace.IMV def unit.|191687|Automobiles & Components|
 |904-2-2013|Retaining wall structure with a main wall (sheet pile): 136 tonnes of steel sheet piles and 4 tonnes of tierods per 100 meter wall|167000|Materials|
-|20527-1-2013|Electric Motor|53058|Capital Goods|
-|20309-7-2014|Audi A6|37094|Automobiles & Components|
-|7164-1-2013|Average of all GM vehicles produced and used in the 10 year life-cycle.|27588|Automobiles & Components|
+|12134-8-2017|TCDE|99075|Materials|
+|4235-30-2016|Mercedes-Benz GLE (GLE 500 4MATIC)|91000|Automobiles & Components|
+|4235-32-2016|Mercedes-Benz S-Class (S 500)|85000|Automobiles & Components|
+|4235-36-2016|Mercedes-Benz SL (SL 350)|72000|Automobiles & Components|
 
 #### What are the industries with the highest contribution to carbon emissions?
 
@@ -126,26 +126,26 @@ Here are the top 10 industries with highest PCF:
 
 ```SQL
 SELECT 	industry_groups.industry_group,
-		SUM(product_emissions.carbon_footprint_pcf) AS "Total PCF"
+		AVG(product_emissions.carbon_footprint_pcf) AS "Total PCF"
 FROM product_emissions
 LEFT JOIN industry_groups
     ON industry_groups.id = product_emissions.industry_group_id
 GROUP BY industry_groups.industry_group
-ORDER BY SUM(carbon_footprint_pcf) DESC
+ORDER BY AVG(carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
 |industry_group|Total PCF|
 |--------------|---------|
-|Electrical Equipment and Machinery|9801558|
-|Automobiles & Components|2582264|
-|Materials|577595|
-|Technology Hardware & Equipment|363776|
-|Capital Goods|258712|
-|"Food, Beverage & Tobacco"|111131|
-|"Pharmaceuticals, Biotechnology & Life Sciences"|72486|
-|Chemicals|62369|
-|Software & Services|46544|
-|Media|23017|
+|Electrical Equipment and Machinery|891050.7273|
+|Automobiles & Components|35373.4795|
+|"Pharmaceuticals, Biotechnology & Life Sciences"|24162.0000|
+|Capital Goods|7391.7714|
+|Materials|3208.8611|
+|"Mining - Iron, Aluminum, Other Metals"|2727.0000|
+|Energy|2154.8000|
+|Chemicals|1949.0313|
+|Media|1534.4667|
+|Software & Services|1368.9412|
 
 #### What are the companies with the highest contribution to carbon emissions?
 
@@ -154,26 +154,26 @@ Top 10 companies with highest PCF
 ```SQL
 SELECT 
     companies.company_name,
-    SUM(product_emissions.carbon_footprint_pcf) AS "Total PCF"
+    AVG(product_emissions.carbon_footprint_pcf) AS "Total PCF"
 FROM product_emissions
 JOIN companies
     ON companies.id = product_emissions.company_id
 GROUP BY companies.company_name
-ORDER BY SUM(product_emissions.carbon_footprint_pcf) DESC
+ORDER BY AVG(product_emissions.carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
 |company_name|Total PCF|
 |------------|---------|
-|"Gamesa Corporación Tecnológica, S.A."|9778464|
-|Daimler AG|1594300|
-|Volkswagen AG|655960|
-|"Mitsubishi Gas Chemical Company, Inc."|212016|
-|"Hino Motors, Ltd."|191687|
-|Arcelor Mittal|167007|
-|Weg S/A|160655|
-|General Motors Company|137007|
-|"Lexmark International, Inc."|132012|
-|"Daikin Industries, Ltd."|105600|
+|"Gamesa Corporación Tecnológica, S.A."|2444616.0000|
+|"Hino Motors, Ltd."|191687.0000|
+|Arcelor Mittal|83503.5000|
+|Weg S/A|53551.6667|
+|Daimler AG|43089.1892|
+|General Motors Company|34251.7500|
+|Volkswagen AG|26238.4000|
+|Waters Corporation|24162.0000|
+|"Daikin Industries, Ltd."|17600.0000|
+|CJ Cheiljedang|15802.8333|
 
 #### What are the countries with the highest contribution to carbon emissions?
 
