@@ -120,6 +120,8 @@ LIMIT 10;
 |20309-7-2014|Audi A6|37094|Automobiles & Components|
 |7164-1-2013|Average of all GM vehicles produced and used in the 10 year life-cycle.|27588|Automobiles & Components|
 
+#### What are the industries with the highest contribution to carbon emissions?
+
 Here are the top 10 industries with highest PCF:
 
 ```SQL
@@ -144,10 +146,6 @@ LIMIT 10;
 |Chemicals|62369|
 |Software & Services|46544|
 |Media|23017|
-
-
-#### What are the industries with the highest contribution to carbon emissions?
-
 
 #### What are the companies with the highest contribution to carbon emissions?
 
