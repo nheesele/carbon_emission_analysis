@@ -67,6 +67,7 @@ SELECT * FROM countries LIMIT 5;
 ## Data analysis
 #### Which products contribute the most to carbon emissions?
 
+Here are the Top 5 products with the highest PCF
 ```SQL
 SELECT 
 		id,
@@ -77,8 +78,6 @@ GROUP BY product_name
 ORDER BY SUM(carbon_footprint_pcf) DESC
 LIMIT 5;
 ```
-Here are the Top 5 products contribute the most to carbon emissions
-
 |id|product_name|Total PCF|
 |--|------------|---------|
 |22917-4-2015|Wind Turbine G128 5 Megawats|3718044|
