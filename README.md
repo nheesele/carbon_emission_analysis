@@ -157,27 +157,30 @@ LIMIT 10;
 
 ```SQL
 SELECT 
+	industry_groups.industry_group,
     companies.company_name,
     ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "Total PCF"
 FROM product_emissions
 JOIN companies
     ON companies.id = product_emissions.company_id
+JOIN industry_groups
+    ON industry_groups.id = product_emissions.industry_group_id
 GROUP BY companies.company_name
 ORDER BY AVG(product_emissions.carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
-|company_name|Total PCF|
-|------------|---------|
-|"Gamesa Corporación Tecnológica, S.A."|2444616.00|
-|"Hino Motors, Ltd."|191687.00|
-|Arcelor Mittal|83503.50|
-|Weg S/A|53551.67|
-|Daimler AG|43089.19|
-|General Motors Company|34251.75|
-|Volkswagen AG|26238.40|
-|Waters Corporation|24162.00|
-|"Daikin Industries, Ltd."|17600.00|
-|CJ Cheiljedang|15802.83|
+|industry_group|company_name|Total PCF|
+|--------------|------------|---------|
+|Electrical Equipment and Machinery|"Gamesa Corporación Tecnológica, S.A."|2444616.00|
+|Automobiles & Components|"Hino Motors, Ltd."|191687.00|
+|Materials|Arcelor Mittal|83503.50|
+|Capital Goods|Weg S/A|53551.67|
+|Automobiles & Components|Daimler AG|43089.19|
+|Automobiles & Components|General Motors Company|34251.75|
+|Automobiles & Components|Volkswagen AG|26238.40|
+|"Pharmaceuticals, Biotechnology & Life Sciences"|Waters Corporation|24162.00|
+|Capital Goods|"Daikin Industries, Ltd."|17600.00|
+|"Food, Beverage & Tobacco"|CJ Cheiljedang|15802.83|
 
 > *Gamesa Corporación Tecnológica* stands out due to its turbine products, but beyond this, the leading emitters are global automotive and industrial giants such as *Hino Motors, Daimler AG,* and *Arcelor Mittal*. This highlights that both renewable technology manufacturers and traditional heavy industries play major roles in the carbon landscape.
 
