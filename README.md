@@ -67,7 +67,7 @@ SELECT * FROM countries LIMIT 5;
 ## Data analysis
 #### Which products contribute the most to carbon emissions?
 
-Here are the Top 10 products with the highest PCF
+Here are the Top 10 products with the highest average PCF
 ```SQL
 SELECT 
 		product_name,
@@ -92,7 +92,7 @@ LIMIT 10;
 
 #### What are the industry groups of these products?
 
-Let's see which industry do the top 10 above belong to:
+Let's see which industry do the top 10 above belongs to:
 ```SQL
 SELECT 	product_emissions.id,
 		product_emissions.product_name,
@@ -121,30 +121,31 @@ LIMIT 10;
 
 #### What are the industries with the highest contribution to carbon emissions?
 
-Here are the top 10 industries with highest PCF:
+Here are the top 10 industries with the highest total PCF:
 
 ```SQL
 SELECT 	industry_groups.industry_group,
-		ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "Total PCF"
+		ROUND(SUM(product_emissions.carbon_footprint_pcf),2) AS "Total PCF"
 FROM product_emissions
 LEFT JOIN industry_groups
     ON industry_groups.id = product_emissions.industry_group_id
 GROUP BY industry_groups.industry_group
-ORDER BY AVG(carbon_footprint_pcf) DESC
+ORDER BY SUM(carbon_footprint_pcf) DESC
 LIMIT 10;
 ```
 |industry_group|Total PCF|
 |--------------|---------|
-|Electrical Equipment and Machinery|891050.73|
-|Automobiles & Components|35373.48|
-|"Pharmaceuticals, Biotechnology & Life Sciences"|24162.00|
-|Capital Goods|7391.77|
-|Materials|3208.86|
-|"Mining - Iron, Aluminum, Other Metals"|2727.00|
-|Energy|2154.80|
-|Chemicals|1949.03|
-|Media|1534.47|
-|Software & Services|1368.94|
+|Electrical Equipment and Machinery|9801558.00|
+|Automobiles & Components|2582264.00|
+|Materials|577595.00|
+|Technology Hardware & Equipment|363776.00|
+|Capital Goods|258712.00|
+|"Food, Beverage & Tobacco"|111131.00|
+|"Pharmaceuticals, Biotechnology & Life Sciences"|72486.00|
+|Chemicals|62369.00|
+|Software & Services|46544.00|
+|Media|23017.00|
+
 
 #### What are the companies with the highest contribution to carbon emissions?
 
